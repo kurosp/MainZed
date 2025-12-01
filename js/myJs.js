@@ -137,7 +137,7 @@ $(document).ready(function () {
           text: textConfig.text11,
           confirmButtonColor: "#83d0c9",
           onClose: () => {
-            window.location = "https://fb.com/nguyenphan299";
+            window.location = "https://fb.com/ToanNamChinh";
           },
         });
       }
@@ -153,3 +153,4 @@ $(document).ready(function () {
     });
   });
 });
+
