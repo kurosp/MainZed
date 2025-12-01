@@ -1,16 +1,16 @@
 const textConfig = {
-  text1: "He luu emm!",
-  text2: "Anh có điều này muốn hỏi cậu nhớ phải trả lời thật lòng nhaaa:3333",
-  text3: "Em yêu anh có phải không nào ._.",
-  text4: "Nếu em ko trả lời mà thoát ra tức là muốn làm vợ anh rùi đó nha :v",
-  text5: "Anh mơ à???",
+  text1: "He luu cậu!",
+  text2: "Tớ có điều này muốn hỏi cậu nhớ phải trả lời thật lòng nhaaa:3333",
+  text3: "Cậu yêu tớ có phải không nào ._.",
+  text4: "Nếu cậu ko trả lời mà thoát ra tức là muốn làm vợ tớ rùi đó nha :v",
+  text5: "Cậu mơ à???",
   text6: "Yêu ơi là yêu <3",
-  text7: "lí do em thích anh đi :vvvv",
-  text8: "Gửi cho anh <3",
-  text9: "Vì anh đẹp trai và học giỏi vl:>>",
-  text10: "anh biết mà ^^ Yêu em",
+  text7: "lí do cậu thích tớ đi :vvvv",
+  text8: "Gửi cho tớ <3",
+  text9: "Vì cậu đẹp try và dthuong vlll:>>",
+  text10: "Tớ biết mà ^^ Yêu cậux 1000.000",
   text11:
-    "Thế từ giờ mình là người yêu nháaa",
+    "Tối nay tớ qua đón cậu đi chơi nhaa :v Còn giờ thì chờ gì nữa mà ko inbox cho tớ đi nàooo",
   text12: "Okii lunn <3",
 };
 
@@ -58,7 +58,8 @@ $(document).ready(function () {
     $("#yes").css("left", leftNo);
     $("#yes").css("top", topNO);
   }
-  // move random button póition
+
+  // move random button position
   function moveButton() {
     var audio = new Audio("sound/Swish1.mp3");
     audio.play();
@@ -85,24 +86,22 @@ $(document).ready(function () {
     if (screen.width >= 900) switchButton();
   });
 
-  // generate text in input
+  /*  
+   *  🔥🔥🔥 HÀM ĐÃ FIX: textGenerate()
+   *  Không reset ô, không ghi lại từ đầu, chỉ tự điền đến khi đủ text9.
+   */
   function textGenerate() {
-    var n = "";
-    var text = " " + textConfig.text9;
-    var a = Array.from(text);
-    var textVal = $("#txtReason").val() ? $("#txtReason").val() : "";
-    var count = textVal.length;
-    if (count > 0) {
-      for (let i = 1; i <= count; i++) {
-        n = n + a[i];
-        if (i == text.length + 1) {
-          $("#txtReason").val("");
-          n = "";
-          break;
-        }
-      }
+    var fullText = textConfig.text9;
+    var current = $("#txtReason").val();
+
+    // Nếu đã đủ → giữ nguyên, không ghi thêm, không xóa
+    if (current.length >= fullText.length) {
+      $("#txtReason").val(fullText);
+      return;
     }
-    $("#txtReason").val(n);
+
+    // Auto điền thêm từng ký tự
+    $("#txtReason").val(fullText.substring(0, current.length + 1));
   }
 
   // show popup
@@ -153,5 +152,4 @@ $(document).ready(function () {
       });
     });
   });
-
 });
